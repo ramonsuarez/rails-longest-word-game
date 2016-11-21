@@ -4,11 +4,12 @@ class WordgamesController < ApplicationController
   end
 
   def score
-    @end_time = Time.now.to_i
-    @start_time = params[:start_time].to_i
-    @grid = params[:grid]
-    @attempt = params[:attempt]
-    @result = run_game(@attempt, @grid, @start_time, @end_time)
+    session[:end_time] = Time.now.to_i
+    session[:attempt] = params[:attempt]
+    # @start_time = params[:start_time].to_i
+    # @grid = params[:grid]
+    # @attempt = params[:attempt]
+    @result = run_game(session[:attempt], session[:grid], session[:start_time], session[:end_time])
   end
 
 # Add methods from exercise answer below

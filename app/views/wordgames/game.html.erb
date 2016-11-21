@@ -2,11 +2,16 @@
     <h2>"Here is your grid :"</h2>
     <%= @grid.join(" ") %>
     <h2>"What's your best shot ?"</h2>
-    <% @start_time = Time.now %>
+    <% @start_time = Time.now.to_i %>
+    <% session[:start_time] = @start_time %>
+    <% session[:grid] = @grid %>
     <form action="/score">
-      <input type="hidden" name="start_time" value="<%= @start_time %>" >
-      <input type="hidden" name=grid value="<%= @grid %>" >
+    <!-- commented this section to try to use session to store values in cookie
+       <input type="hidden" name="start_time" value="<%#= @start_time %>" >
+      <input type="hidden" name=grid value="<%#= @grid %>" >
       <input type="text" id="answer" name="attempt" placeholder="Your word">
+ -->
+      <input type="text" id="answer" name="attempt" placeholder="Your word" >
       <input type="submit" value="Answer">
     </form>
 
